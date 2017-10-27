@@ -1,0 +1,29 @@
+This is the page of <%= @band.name %>!
+<br>
+<%= button_to "Update Band Name", edit_band_url(@band), method: :get %><br>
+
+
+<% @band.albums.each do |album| %>
+  <%= album.title %><br>
+  <%= album.year %><br>
+  <%= album.studio ? "Studio Album" : "Live Album" %><br>
+<% end %>
+
+<form action=" <%= albums_url %> " method="post">
+  <input type="hidden" name="album[band_id]" value=" <%= @band.id %> ">
+  <%= auth_token %>
+
+  <label for="title">Album Title</label>
+  <input type="text" name="album[title]"><br>
+
+  <label for="year">Release Year</label>
+  <input type="text" name="album[year]" value=""><br>
+
+  <label for="studio">Studio Album?</label>
+  <input type="radio" name="album[studio]" value="true">True
+  <input type="radio" name="album[studio]" value="false">False<br>
+
+
+  <input type="submit" value="Add Album">
+
+</form>
