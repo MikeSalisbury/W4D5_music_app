@@ -5,21 +5,16 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <header>
-    <%= render 'shared/errors' %>
-    <h1 class="main_title">music app</h1>
-    <% if current_user %>
-      <%= button_to "Log Out", sessions_url, method: :delete %>
-    <% else %>
-      <%= button_to "Sign Up", new_user_url, method: :get %><br>
-      <%= button_to "Log In", new_sessions_url, method: :get %><br>
-    <% end %>
-  </header>
-
   <body>
-    <%= yield %>
+    <div class="header">
+      <%= render "/layouts/header" %>
+    </div>
+    <div class="main-content">
+      <%= yield %>
+    </div>
   </body>
 </html>
